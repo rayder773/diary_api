@@ -1,9 +1,8 @@
 const models = require('../models');
 const db = require('../index');
-const {db: dbConfig} = require('../../configs')
 
 models.sequelize
-  .sync(false)
+  .sync({forse: true})
   .then(() => console.info('Done!'))
   .catch(ex => console.error('ex: ', ex))
   .finally(() => {

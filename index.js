@@ -6,7 +6,7 @@ const logger = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const sanitizer = require('express-sanitizer');
-// const db = require('./db');
+const db = require('./db');
 // const rateLimiter = require('./util/rateLimiter');
 // const checkCountries = require('./util/checkCountries')
 const router = require('./routes');
@@ -44,15 +44,15 @@ app.use((err, req, res, next) => {
 });
 
 const start = async () => {
-  // try {
-  //   if(dbConfig.auth) {
-  //     await db.getConnection().authenticate();
-  //   }
+  try {
+    if(dbConfig.auth) {
+      await db.getConnection().authenticate();
+    }
 
-  //   console.log('Connection to database is established');
-  // } catch (ex) {
-  //   console.error('Unable to connect to the database:', ex);
-  // }
+    console.log('Connection to database is established');
+  } catch (ex) {
+    console.error('Unable to connect to the database:', ex);
+  }
 
   app.listen(server.port, () => console.log(`Server has started: http://${server.host}:${server.port}`));
 };

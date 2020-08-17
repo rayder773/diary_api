@@ -6,9 +6,9 @@ const {
   PORT = '3000',
   DB_HOST = '0.0.0.0',
   DB_USERNAME = 'root',
-  DB_PASSWORD = null,
+  DB_PASSWORD = 1,
   DB_DATABASE = 'diary',
-  DB_PORT = '3306',
+  DB_PORT = '5432',
   DB_AUTH = true,
   MAILER_ENABLED = MAILER.ENABLED.YES,
   MAILER_API_KEY = null,
@@ -31,7 +31,7 @@ module.exports = {
     port: port
   },
   db: {
-    dialect: 'mysql',
+    dialect: 'postgres',
     host: DB_HOST,
     port: dbPort,
     username: DB_USERNAME,
