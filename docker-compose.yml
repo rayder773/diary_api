@@ -10,4 +10,17 @@ services:
       - /usr/src/app/node_modules
     ports:
       - "3000:3000"
+  db:
+    image: postgres
+    restart: always
+    env_file:
+      - ".env"
+    ports:
+      - ${DB_PORT}:5432
+    environment:
+      - POSTGRES_DB=$DB_DATABASE
+      - POSTGRES_USER=$DB_USERNAME
+      - POSTGRES_PASSWORD=$DB_PASSWORD 
+    volumes:
+      - /data/docker/postgresql:/var/lib/postgresql 
       
